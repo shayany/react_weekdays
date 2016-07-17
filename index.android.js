@@ -1,4 +1,5 @@
 
+import Moment from 'moment';
 import React, { Component } from 'react';
 import {
   AppRegistry,
@@ -18,8 +19,15 @@ var ShowDays = React.createClass(
   render: function(){ //The render key and function value are necessary
     return <View style={styles.container}>
       <Text>Days of the week:</Text>
-      <DayItem day={DAYS[0]}/>
+      <Text>{Moment().format('ddd')}</Text>
+      {this.days()}
     </View>
+  },
+  //Additional helper function
+  days: function(){
+    return DAYS.map(function(day){
+      return <DayItem day={day} key={day}/>
+    });
   }
 });
 
